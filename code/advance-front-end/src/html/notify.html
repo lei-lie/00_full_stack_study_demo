@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title标签与Hack手段</title>
+</head>
+<body>
+    <h1>修改浏览器title</h1>
+    <script >
+        let msgNum = 1 // 消息条数
+        let count = 0 // 计数器
+        const timer = setInterval(() => {
+            count = (count + 1) % 2
+            if (msgNum === 0) {
+                document.title += '聊天页面'
+                clearInterval(timer)
+                return
+            }
+            const prefix = count % 2 ? `新消息${msgNum}` : ''
+            document.title = `聊天页面--${prefix}`
+        },1000)
+    </script>
+</body>
+</html>
