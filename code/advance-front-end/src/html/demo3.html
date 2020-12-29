@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高效操作DOM--循环外操作DOM</title>
+</head>
+
+<body>
+    <script>
+        // 读取 1000 次 JSON 对象以及访问 1000 次 body 元素的耗时差异
+        const times = 1000;
+        console.time('switch')
+        for (let i = 0; i < times; i++) {
+            document.body === 1 ? console.log(1) : void 0;
+        }
+        console.timeEnd('switch')//1.337890625 ms
+        var body = JSON.stringify(document.body)
+        console.time('batch')
+        for (let i = 0; i < times; i++) {
+            body === 1 ? console.log(1) : void 0;
+        }
+        console.timeEnd('batch')//0.02783203125 ms
+    </script>
+</body>
+
+</html>
